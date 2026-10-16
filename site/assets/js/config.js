@@ -12,7 +12,7 @@ window.EAV_CONFIG = {
      - supabaseKey  : "Publishable key" (sb_publishable_...) atau "anon public".
        Kunci ini memang aman dipasang di website.
        JANGAN pernah menempel "Secret key" / "service_role" di sini. */
-  supabaseUrl: 'https://mkqvbrwceogxhssftwig.supabase.co/rest/v1/',
+  supabaseUrl: 'supabaseUrl: 'https://mkqvbrwceogkhssftwig.supabase.co',
   supabaseKey: 'sb_publishable_GEDgy3zJCaNjCwLDsO4eYw_l94R6W0L',
 
   /* 2. MEDIA DARI CLOUDINARY
