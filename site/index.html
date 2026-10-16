@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="id" data-tema="pagi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Egyptian Arabic Vocabulary — Kamus saku maba Indonesia di Mesir</title>
+  <meta name="description" content="Kosakata dan kalimat sehari-hari dalam Fusha, 'Ammiyah Mesir, dan Madinah untuk mahasiswa baru Indonesia di Mesir.">
+  <meta name="theme-color" content="#F4EBDD" id="warnaTema">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Egyptian Arabic Vocabulary">
+  <meta property="og:description" content="Kamus saku Fusha, 'Ammiyah Mesir, dan Madinah untuk maba Indonesia di Mesir.">
+  <meta property="og:image" content="https://egypt-arabic-vocabulary.pages.dev/assets/img/og.jpg">
+  <meta property="og:url" content="https://egypt-arabic-vocabulary.pages.dev/">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" href="assets/img/favicon-32.png" sizes="32x32">
+  <link rel="apple-touch-icon" href="assets/img/ikon-180.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Marcellus&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,700;0,800;1,400&display=swap" rel="stylesheet">
+
+  <script>
+    /* Pasang tema & bahasa terakhir sebelum halaman tampil (supaya tidak berkedip) */
+    (function () {
+      var d = document.documentElement;
+      try {
+        if (localStorage.getItem('eav-tema') === 'malam') d.setAttribute('data-tema', 'malam');
+        if (localStorage.getItem('eav-bahasa') === 'en') d.setAttribute('lang', 'en');
+      } catch (e) {}
+    })();
+  </script>
+  <link rel="stylesheet" href="assets/css/style.css?v=1">
+</head>
+<body>
+  <!-- ================= LAYAR LOADING ================= -->
+  <div class="loader" id="loader" role="status" aria-live="polite">
+    <div class="loader-isi">
+      <div class="loader-media">
+        <video id="loaderVideo" muted playsinline preload="auto" aria-hidden="true"></video>
+        <img id="loaderLogo" class="loader-logo" src="assets/img/logo.webp" alt="Egyptian Arabic Vocabulary" hidden>
+      </div>
+      <div class="loader-bar" aria-hidden="true"><span id="loaderBar"></span></div>
+      <p class="loader-angka"><span id="loaderAngka">0</span>%</p>
+      <div class="loader-gagal" id="loaderGagal" hidden>
+        <p id="loaderPesan"></p>
+        <button type="button" id="loaderUlang"></button>
+      </div>
+    </div>
+  </div>
+
+  <a class="lompat" href="#panel" data-t="lompat">Langsung ke isi</a>
+
+  <!-- ================= MENU RINGKAS (muncul saat scroll) ================= -->
+  <nav class="mini" id="mini" aria-label="Menu ringkas">
+    <div class="wadah mini-isi">
+      <div class="mini-menu">
+        <button type="button" data-go="home" data-t="menuHome">Home</button>
+        <button type="button" data-go="sub" data-t="menuKosakata">Kosakata</button>
+        <button type="button" data-go="tentang" data-t="menuTentang">Tentang Saya</button>
+        <button type="button" data-go="administrasi" data-t="menuAdministrasiPendek">Administrasi</button>
+      </div>
+      <div class="alat alat-kecil">
+        <button type="button" class="tombol-tema" data-aksi="tema" aria-label="Ganti mode"><span class="ikon-tema" aria-hidden="true"></span></button>
+        <button type="button" class="tombol-bahasa" data-aksi="bahasa" aria-label="Ganti bahasa"><span data-bahasa="id">ID</span><span data-bahasa="en">EN</span></button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ================= HEADER ================= -->
+  <header class="hero" id="hero">
+    <div class="hero-foto" aria-hidden="true">
+      <img id="fotoPagi" class="foto-pagi" alt="" decoding="async" fetchpriority="high">
+      <img id="fotoMalam" class="foto-malam" alt="" decoding="async">
+    </div>
+
+    <div class="hero-atas">
+      <div class="wadah hero-atas-isi">
+        <button type="button" class="merek" data-go="home" aria-label="Home">
+          <img src="assets/img/lambang.webp" alt="" width="44" height="39">
+        </button>
+        <div class="alat">
+          <button type="button" class="tombol-tema" data-aksi="tema" aria-label="Ganti mode">
+            <span class="ikon-tema" aria-hidden="true"></span><span class="label-tema"></span>
+          </button>
+          <button type="button" class="tombol-bahasa" data-aksi="bahasa" aria-label="Ganti bahasa">
+            <span data-bahasa="id">ID</span><span data-bahasa="en">EN</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-isi">
+      <div class="wadah">
+        <p class="hero-ar anim" lang="ar" dir="rtl" aria-hidden="true">قاموس الجيب</p>
+        <h1 class="anim">Egyptian Arabic Vocabulary</h1>
+        <p class="hero-sub anim" data-t="subjudul">Kamus saku untuk maba Indonesia di Mesir</p>
+        <p class="hero-kredit anim"><span data-t="dibuatOleh">Dibuat oleh</span> <button type="button" class="link-nama" data-go="tentang" id="namaPembuat"></button></p>
+
+        <nav class="menu anim" aria-label="Menu utama">
+          <button type="button" data-go="home" data-t="menuHome">Home</button>
+          <button type="button" data-go="tentang" data-t="menuTentang">Tentang Saya</button>
+          <button type="button" data-go="administrasi" data-t="menuAdministrasi">Administrasi di Mesir</button>
+          <button type="button" id="tombolKosakata" aria-expanded="false" aria-controls="menuSub"><span data-t="menuKosakata">Kosakata</span><span class="plus" aria-hidden="true">+</span></button>
+        </nav>
+        <div class="menu-sub" id="menuSub" hidden></div>
+
+        <div class="jam anim" id="jam" aria-label="Jam"></div>
+      </div>
+    </div>
+  </header>
+
+  <main class="wadah" id="utama">
+    <!-- ================= PENCARIAN ================= -->
+    <section class="kotak-cari" aria-label="Pencarian">
+      <form id="formCari" role="search">
+        <label for="inputCari" data-t="cariLabel">Cari kata atau kalimat</label>
+        <div class="baris-cari">
+          <input id="inputCari" type="search" autocomplete="off" enterkeyhint="search">
+          <button type="submit" data-t="cariTombol">Cari</button>
+        </div>
+        <p class="bantuan" data-t-html="cariBantuan"></p>
+      </form>
+    </section>
+
+    <!-- ================= PANEL (isi berganti sesuai menu) ================= -->
+    <section class="panel" id="panel" tabindex="-1" aria-live="polite"></section>
+  </main>
+
+  <footer>
+    <div class="wadah">
+      <svg class="bintang" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 1.5l2.6 4.2 4.8-1.1-1.1 4.8 4.2 2.6-4.2 2.6 1.1 4.8-4.8-1.1L12 22.5l-2.6-4.2-4.8 1.1 1.1-4.8L1.5 12l4.2-2.6-1.1-4.8 4.8 1.1z"/></svg>
+      <p><span data-t="footerDibuat1">Dibuat oleh</span> <strong id="footerNama"></strong> <span data-t="footerDibuat2">untuk mahasiswa baru Indonesia di Mesir.</span></p>
+      <p data-t-html="footerVerifikasi"></p>
+      <p id="footerWaktu"></p>
+      <div class="footer-aksi">
+        <a class="tombol-trakteer" id="tombolTrakteer" target="_blank" rel="noopener" hidden><span aria-hidden="true">☕</span> <span data-t="trakteer">Traktir Abrar kopi</span></a>
+        <button type="button" class="tombol-garis" data-go="usulkan" id="tombolUsulkan" hidden><span aria-hidden="true">✍️</span> <span data-t="usulkanKata">Usulkan kata</span></button>
+      </div>
+      <p class="footer-admin"><button type="button" class="link-kecil" id="tombolAdmin" data-t="masukAdmin">Masuk admin</button></p>
+    </div>
+  </footer>
+
+  <button type="button" id="keAtas" aria-label="Kembali ke atas">&uarr;</button>
+  <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+
+  <script src="assets/js/config.js?v=1"></script>
+  <script src="assets/js/teks.js?v=1"></script>
+  <script src="assets/js/app.js?v=1"></script>
+</body>
+</html>
