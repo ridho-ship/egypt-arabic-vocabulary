@@ -36,7 +36,7 @@ window.EAV_CONFIG = {
 
   /* 3. FITUR TAMBAHAN (bisa dinyalakan nanti) */
   trakteer: '',          /* contoh 'https://trakteer.id/namaabrar' — kosong = tombol tidak tampil */
-  fiturMasukan: false,   /* true = tombol "Usulkan kata" dan formulir masukan tampil */
+  fiturMasukan: true,   /* true = tombol "Usulkan kata" dan formulir masukan tampil */
 
   /* 4. TEKS & LAINNYA */
   namaCadangan: 'Abrar Akhmad Ridho',
