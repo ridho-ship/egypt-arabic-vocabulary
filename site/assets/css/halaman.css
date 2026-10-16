@@ -1,0 +1,60 @@
+/* =====================================================================
+   TAMPILAN HALAMAN STATIS (halaman per kata & per situasi untuk Google)
+   Memakai warna dari style.css, jadi otomatis ikut mode pagi/malam.
+   ===================================================================== */
+body.halaman-statis { background: var(--bg); }
+.atas-statis { border-bottom: 1px solid var(--garis); background: var(--kartu); position: sticky; top: 0; z-index: 10; }
+.atas-statis-isi { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-top: 10px; padding-bottom: 10px; }
+.merek-statis { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; color: var(--teks); font-family: var(--font-judul); font-size: 1.05rem; }
+.merek-statis img { width: 36px; height: auto; }
+@media (max-width: 480px) { .merek-statis span { display: none; } }
+.tombol-utama.kecil { min-height: 38px; padding: 8px 14px; font-size: .88rem; }
+
+.isi-statis { padding-top: 22px; padding-bottom: 40px; }
+.isi-statis h1 { font-family: var(--font-judul); font-weight: 400; font-size: clamp(1.9rem, 6vw, 2.8rem); line-height: 1.1; margin: 6px 0 10px; }
+.isi-statis h1 span { display: block; font-family: var(--font-ui); font-size: 1rem; color: var(--teks-2); margin-top: 6px; }
+.isi-statis h2 { font-size: 1.05rem; margin: 0 0 6px; }
+.remah { font-size: .84rem; color: var(--teks-2); margin-bottom: 14px; }
+.remah a { color: var(--teks-2); }
+.label-statis { font-size: .82rem; color: var(--teks-2); margin: 0; }
+.terjemah-statis { color: var(--teks-2); margin: 0 0 18px; }
+
+.kata-statis { background: var(--kartu); border: 1px solid var(--garis); border-radius: var(--radius); padding: 20px 18px; }
+.grid-logat { display: grid; gap: 12px; margin-bottom: 16px; }
+@media (min-width: 760px) { .grid-logat { grid-template-columns: repeat(3, 1fr); } }
+.logat-statis { border-top: 3px solid var(--warna); background: color-mix(in srgb, var(--warna) 7%, transparent); border-radius: 0 0 14px 14px; padding: 12px 14px; }
+.logat-statis h2 { color: var(--warna); font-size: .9rem; }
+.logat-statis .ar { font-size: 2rem; text-align: right; }
+.logat-statis .lat { font-size: 1rem; text-align: right; }
+.logat-statis .ket { font-size: .8rem; color: var(--teks-2); margin: 8px 0 0; }
+.catatan-statis { border-top: 1px dashed var(--garis); padding-top: 12px; margin-bottom: 16px; }
+.catatan-statis p { margin: 0 0 6px; }
+.catatan-statis .kecil { font-size: .86rem; color: var(--teks-2); }
+
+.lain-statis { margin-top: 24px; }
+.lain-statis ul, .daftar-statis { list-style: none; padding: 0; margin: 10px 0 18px; display: grid; gap: 8px; }
+@media (min-width: 760px) { .lain-statis ul { grid-template-columns: repeat(2, 1fr); } }
+.lain-statis a, .daftar-statis a {
+  display: flex; align-items: center; justify-content: space-between; gap: 10px; text-decoration: none; color: var(--teks);
+  background: var(--kartu); border: 1px solid var(--garis); border-radius: 12px; padding: 10px 14px; min-height: 48px;
+}
+.lain-statis a:hover, .daftar-statis a:hover { border-color: var(--aksen); }
+.lain-statis .ar, .daftar-statis .ar { font-family: var(--font-ar); font-size: 1.3rem; }
+.daftar-statis a { display: grid; grid-template-columns: 1fr auto; }
+.daftar-statis .indo { font-weight: 700; }
+.daftar-statis .lat { grid-column: 1 / -1; font-size: .84rem; color: var(--teks-2); font-style: italic; text-align: right; margin-top: -4px; }
+@media (min-width: 760px) {
+  .daftar-statis a { grid-template-columns: 1.2fr 1fr 1fr; }
+  .daftar-statis .lat { grid-column: auto; margin: 0; }
+}
+
+.ubin-statis { list-style: none; padding: 0; margin: 16px 0; display: grid; gap: 10px; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); }
+.ubin-statis a { display: flex; flex-direction: column; gap: 4px; height: 100%; text-decoration: none; color: var(--teks); background: var(--kartu); border: 1px solid var(--garis); border-radius: 14px; padding: 14px; }
+.ubin-statis a:hover { border-color: var(--aksen); }
+.ubin-statis .ikon { font-size: 1.5rem; }
+.ubin-statis small { color: var(--teks-2); }
+.ubin-statis .jumlah { color: var(--mesir); font-weight: 700; font-size: .82rem; margin-top: auto; }
+
+.kaki-statis { padding: 10px 16px 40px; font-size: .86rem; color: var(--teks-2); }
+.kaki-statis p { margin: 0 0 6px; }
+.kaki-statis a { color: var(--teks-2); }

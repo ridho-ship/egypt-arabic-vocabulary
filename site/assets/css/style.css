@@ -472,3 +472,7 @@ footer p { margin: 0 0 6px; }
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
   .anim { opacity: 1; transform: none; }
 }
+
+/* Daftar link kosakata di footer (untuk Google & pengunjung) */
+.daftar-situs { margin: 10px 0 4px; font-size: .84rem; }
+.daftar-situs a { color: var(--teks-2); }

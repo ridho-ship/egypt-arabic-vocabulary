@@ -99,6 +99,12 @@ function onOpen() {
     .addItem('Nyalakan sinkron otomatis (tiap 5 menit)', 'nyalakanOtomatis')
     .addItem('Matikan sinkron otomatis', 'matikanOtomatis')
     .addSeparator()
+    .addSubMenu(SpreadsheetApp.getUi().createMenu('Halaman Google (SEO)')
+      .addItem('Perbarui halaman Google sekarang', 'perbaruiHalamanGoogle')
+      .addSeparator()
+      .addItem('1. Atur deploy hook Cloudflare', 'aturDeployHook')
+      .addItem('2. Nyalakan pembaruan harian', 'nyalakanHarian')
+      .addItem('Matikan pembaruan harian', 'matikanHarian'))
     .addSubMenu(SpreadsheetApp.getUi().createMenu('Pengaturan & darurat')
       .addItem('1. Atur kunci Supabase', 'aturKunci')
       .addItem('2. Siapkan sheet (kolom Tanggal Update & status Diarsipkan)', 'siapkanSheet')
@@ -148,6 +154,71 @@ function matikanOtomatis(diam) {
     .filter((t) => t.getHandlerFunction() === 'tarikOtomatis')
     .forEach((t) => ScriptApp.deleteTrigger(t));
   if (diam !== true) SpreadsheetApp.getUi().alert('Sinkron otomatis dimatikan.');
+}
+
+
+/* =====================================================================
+   HALAMAN GOOGLE (SEO)
+   Website membuat satu halaman per kata saat Cloudflare "build".
+   Supaya kata baru ikut punya halaman, Cloudflare perlu build ulang:
+   menu ini memanggil "deploy hook" Cloudflare (sekali sehari otomatis,
+   atau kapan saja lewat menu).
+   ===================================================================== */
+function aturDeployHook() {
+  const ui = SpreadsheetApp.getUi();
+  const r = ui.prompt('Deploy hook Cloudflare',
+    'Tempel link deploy hook dari Cloudflare Pages\n(Settings → Builds → Deploy hooks), diawali https://api.cloudflare.com/...\n' +
+    'Link ini RAHASIA: jangan dibagikan.', ui.ButtonSet.OK_CANCEL);
+  if (r.getSelectedButton() !== ui.Button.OK) return;
+  const url = r.getResponseText().trim();
+  if (!/^https:\/\/api\.cloudflare\.com\//.test(url)) {
+    ui.alert('Link tidak dikenali. Harus diawali https://api.cloudflare.com/');
+    return;
+  }
+  PropertiesService.getScriptProperties().setProperty('DEPLOY_HOOK', url);
+  ui.alert('Deploy hook tersimpan ✅\nSekarang klik "Perbarui halaman Google sekarang" untuk mencoba.');
+}
+
+function panggilDeployHook_() {
+  const url = PropertiesService.getScriptProperties().getProperty('DEPLOY_HOOK');
+  if (!url) throw new Error('Deploy hook belum diatur. Buka menu Halaman Google (SEO) → 1. Atur deploy hook Cloudflare.');
+  const res = UrlFetchApp.fetch(url, { method: 'post', muteHttpExceptions: true });
+  const kode = res.getResponseCode();
+  if (kode < 200 || kode >= 300) throw new Error('Cloudflare menjawab ' + kode + ': ' + res.getContentText().slice(0, 200));
+}
+
+function perbaruiHalamanGoogle() {
+  const ui = SpreadsheetApp.getUi();
+  try {
+    panggilDeployHook_();
+    PropertiesService.getScriptProperties().setProperty('DEPLOY_TERAKHIR', new Date().toISOString());
+    ui.alert('Berhasil ✅', 'Cloudflare sedang membangun ulang website (sekitar 1–2 menit).\nSetelah itu kata-kata terbaru punya halaman sendiri dan masuk sitemap.', ui.ButtonSet.OK);
+  } catch (err) {
+    ui.alert('Gagal ❌', String(err.message || err), ui.ButtonSet.OK);
+  }
+}
+
+/** Dipanggil pemicu harian */
+function perbaruiHarian() {
+  try {
+    panggilDeployHook_();
+    PropertiesService.getScriptProperties().setProperty('DEPLOY_TERAKHIR', new Date().toISOString());
+  } catch (err) {
+    console.error('Pembaruan harian gagal: ' + (err.message || err));
+  }
+}
+
+function nyalakanHarian() {
+  matikanHarian(true);
+  ScriptApp.newTrigger('perbaruiHarian').timeBased().everyDays(1).atHour(3).create();
+  SpreadsheetApp.getUi().alert('Pembaruan harian aktif ✅\nSetiap hari sekitar jam 03.00 (zona waktu spreadsheet) halaman Google dibangun ulang otomatis.');
+}
+
+function matikanHarian(diam) {
+  ScriptApp.getProjectTriggers()
+    .filter((t) => t.getHandlerFunction() === 'perbaruiHarian')
+    .forEach((t) => ScriptApp.deleteTrigger(t));
+  if (diam !== true) SpreadsheetApp.getUi().alert('Pembaruan harian dimatikan.');
 }
 
 

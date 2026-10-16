@@ -6,7 +6,7 @@
    ===================================================================== */
 window.EAV_TEKS = {
   id: {
-    judulHalaman: 'Egyptian Arabic Vocabulary — Kamus saku maba Indonesia di Mesir',
+    judulHalaman: 'Egyptian Arabic Vocabulary — Kamus Bahasa Arab Mesir untuk Maba Indonesia',
     lompat: 'Langsung ke isi',
     subjudul: 'Kamus saku untuk maba Indonesia di Mesir',
     dibuatOleh: 'Dibuat oleh',
@@ -97,7 +97,7 @@ window.EAV_TEKS = {
   },
 
   en: {
-    judulHalaman: 'Egyptian Arabic Vocabulary — A pocket dictionary for Indonesian students in Egypt',
+    judulHalaman: 'Egyptian Arabic Vocabulary — Egyptian Arabic Dictionary for Indonesian Students',
     lompat: 'Skip to content',
     subjudul: 'A pocket dictionary for new Indonesian students in Egypt',
     dibuatOleh: 'Made by',
