@@ -47,7 +47,7 @@ window.EAV_TEKS = {
     usulkanKataIni: 'Usulkan kata ini',
 
     infoAsal: 'Asal', infoKampus: 'Kampus', infoTiba: 'Tiba di Mesir',
-    cerita_paragraf_1: 'Kenapa Mesir?', cerita_paragraf_2: 'Awal datang',
+    cerita_paragraf_1: 'Tentang saya', cerita_paragraf_2: 'Awal datang',
     cerita_paragraf_3: 'Soal bahasa', cerita_paragraf_4: 'Pesan untuk maba',
     ceritaKosongJudul: 'Cerita sedang ditulis',
     ceritaKosongIsi: 'Bagian ini akan berisi pengalaman menjadi mahasiswa di Mesir.',
@@ -138,7 +138,7 @@ window.EAV_TEKS = {
     usulkanKataIni: 'Suggest this word',
 
     infoAsal: 'From', infoKampus: 'University', infoTiba: 'Arrived in Egypt',
-    cerita_paragraf_1: 'Why Egypt?', cerita_paragraf_2: 'First arrival',
+    cerita_paragraf_1: 'About me', cerita_paragraf_2: 'First arrival',
     cerita_paragraf_3: 'About the language', cerita_paragraf_4: 'A message for new students',
     ceritaKosongJudul: 'Story in progress',
     ceritaKosongIsi: 'This section will tell what it is like to study in Egypt.',
